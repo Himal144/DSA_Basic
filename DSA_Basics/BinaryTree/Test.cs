@@ -14,6 +14,11 @@ namespace DSA_Basics.BinaryTree
             var obj = new BinaryTreeOperation();
             TreeNode? root = obj.CreateBinaryTree(new int[] { 1, 2, 3, 4, 5, 6, 7 });
             obj.PrintTree(root);
+            obj.InOrderTraversal(root);
+            Console.WriteLine();
+            obj.PreOrderTraversal(root);
+            Console.WriteLine();
+            obj.PostOrderTraversal(root);
         }
     }
 }

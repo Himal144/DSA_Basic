@@ -93,5 +93,30 @@ namespace DSA_Basics.BinaryTree
             Console.WriteLine(new string(' ', level * 4) + node.data);
             PrintTree(node.left, level + 1);
         }
+
+
+        public void InOrderTraversal(TreeNode? node)
+        {
+            if (node == null) return;
+            InOrderTraversal(node.left);
+            Console.Write(node.data + " ");
+            InOrderTraversal(node.right );
+        }
+
+        public void PreOrderTraversal(TreeNode? node)
+        {
+            if(node == null) return;
+            Console.Write(node.data + " ");
+            PreOrderTraversal(node.left);
+            PreOrderTraversal(node.right ) ;
+        }
+
+        public void PostOrderTraversal(TreeNode? node)
+        {
+            if (node == null) return;
+            PostOrderTraversal(node.left);
+            PostOrderTraversal(node.right);
+            Console.Write(node.data + " ");
+        }
     }
 }

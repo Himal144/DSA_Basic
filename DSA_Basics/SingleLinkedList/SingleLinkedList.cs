@@ -109,5 +109,22 @@ namespace DSA_Basics.SingleLinkedList
             Console.WriteLine("{0} element is not present in linked list.",element.ToString());
         
         }
+
+
+        public Node ReverseLinkedList(Node head)
+        {
+
+            Node temp = null;
+            Node temp2 = head;
+
+            while(temp2 != null)
+            {
+                temp2 = head.link;
+                head.link = temp;
+                temp = head;
+                head = temp2;
+            }
+            return temp;
+        }
     }
 }

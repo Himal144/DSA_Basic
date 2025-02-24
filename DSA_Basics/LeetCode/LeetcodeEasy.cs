@@ -60,5 +60,32 @@ namespace DSA_Basics.LeetCode
             }
             return longestPrefix;
         }
+
+        public static int[] LongestConsecutiveSequence(int[] numbers)
+        {
+            HashSet<int> numSet = new HashSet<int>(numbers);
+            int sequenceLength = 0;
+            List<int> longestSequence = new List<int>();
+            foreach (int num in numSet)
+            {
+               
+                List<int> currentSequence = new List<int>();
+                if (!numSet.Contains(num - 1))
+                {
+                    int currentNum = num;
+                    while (numSet.Contains(currentNum))
+                    {
+                        currentSequence.Add(currentNum);
+                        currentNum++;
+                    }
+                    if(currentSequence.Count > sequenceLength)
+                    {
+                        sequenceLength = currentSequence.Count;
+                        longestSequence = new List<int> (currentSequence);
+                    }
+                }
+            }
+            return longestSequence.ToArray();
+        }
     }
 }

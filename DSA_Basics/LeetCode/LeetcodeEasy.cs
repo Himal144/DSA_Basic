@@ -87,5 +87,35 @@ namespace DSA_Basics.LeetCode
             }
             return longestSequence.ToArray();
         }
+
+        public static bool CheckValidParanthesis(string paranthesis)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            Dictionary<char, char> matchingPairs = new Dictionary<char, char>
+        {
+            { ')', '(' },
+            { '}', '{' },
+            { ']', '[' }
+        };
+
+            foreach (char ch in paranthesis)
+            {
+                if (matchingPairs.ContainsValue(ch)) // Opening bracket
+                {
+                    stack.Push(ch);
+                }
+                else if (matchingPairs.ContainsKey(ch)) // Closing bracket
+                {
+                    if (stack.Count == 0 || stack.Pop() != matchingPairs[ch])
+                    {
+                        return false; // Mismatched or extra closing bracket
+                    }
+                }
+            }
+
+            return stack.Count == 0; // Stack should be empty if valid
+        }
+
     }
 }

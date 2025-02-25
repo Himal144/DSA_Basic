@@ -109,5 +109,31 @@ namespace DSA_Basics.SingleLinkedList
             Console.WriteLine("{0} element is not present in linked list.",element.ToString());
         
         }
+
+
+        public Node? MergeTwoSortedLinkedList(Node list1,Node list2)
+        {
+            if (list1 == null) return null;
+            if (list2 == null) return null;
+            var dummyNode = new Node(0);
+            Node current = dummyNode;
+
+            while(list1 != null && list2 != null)
+            {
+                if (list1.info <= list2.info)
+                {
+                    current.link = list1;
+                    list1 = list1.link;
+                }
+                else
+                {
+                    current.link = list2;
+                    list2 = list2.link;
+                }
+                current = current.link;
+            }
+            current.link = (list1 != null) ? list1 : list2;
+            return dummyNode.link;
+        }
     }
 }

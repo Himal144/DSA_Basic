@@ -116,6 +116,21 @@ namespace DSA_Basics.LeetCode
 
             return stack.Count == 0; // Stack should be empty if valid
         }
+        //Remove specific element from the array changing the original array
+        public int RemoveDuplicate(int[] nums, int num)
+        {
+            int index = 0; // Keeps track of non-matching elements
 
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != num)
+                {
+                    nums[index] = nums[i]; // Overwrite unwanted elements
+                    index++;
+                }
+            }
+
+            return index; // New length of the array after removal
+        }
     }
 }

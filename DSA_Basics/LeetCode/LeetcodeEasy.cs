@@ -116,6 +116,7 @@ namespace DSA_Basics.LeetCode
 
             return stack.Count == 0; // Stack should be empty if valid
         }
+
         //Remove specific element from the array changing the original array
         public int RemoveDuplicate(int[] nums, int num)
         {
@@ -131,6 +132,26 @@ namespace DSA_Basics.LeetCode
             }
 
             return index; // New length of the array after removal
+        }
+
+        public int StrStr(string heystack,string needle)
+        {
+            int heyStackLength= heystack.Length;
+            int needleLength = needle.Length;
+            for (int i =0; i <= heyStackLength - needleLength; i++)
+            {
+                int j = 0;
+                while (j<needleLength && heystack[i + j] == needle[j])
+                {
+                    j++;
+                }
+                if(j == needleLength)
+                {
+                    return i;
+                }
+              
+            }
+            return -1;
         }
     }
 }

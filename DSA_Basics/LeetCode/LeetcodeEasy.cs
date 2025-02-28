@@ -153,5 +153,30 @@ namespace DSA_Basics.LeetCode
             }
             return -1;
         }
+
+        //Function used to search the position of the particular element in the sorted array and give position if find and insert position if not find
+        public int SearchInsertPosition(int[] nums,int target)
+        {
+            int low = 0;
+            int high = nums.Length - 1;
+
+            while(low <= high)
+            {
+                int mid = (low + high) / 2;
+                if(nums[mid] == target)
+                {
+                    return mid;
+                }
+                if(nums[mid] < target)
+                {
+                    low = mid+1;
+                }
+                else
+                {
+                    high = mid-1;
+                }
+            }
+            return low;
+        }
     }
 }

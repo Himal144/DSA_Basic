@@ -160,23 +160,45 @@ namespace DSA_Basics.LeetCode
             int low = 0;
             int high = nums.Length - 1;
 
-            while(low <= high)
+            while (low <= high)
             {
                 int mid = (low + high) / 2;
-                if(nums[mid] == target)
+                if (nums[mid] == target)
                 {
                     return mid;
                 }
-                if(nums[mid] < target)
+                if (nums[mid] < target)
                 {
-                    low = mid+1;
+                    low = mid + 1;
                 }
                 else
                 {
-                    high = mid-1;
+                    high = mid - 1;
                 }
             }
             return low;
         }
+
+        //Function used to find the length of the last word consisting non space(Need to push).
+
+        public int LengthOfLastWord(string sentence)
+        {
+            int i = sentence.Length-1;
+            int length = 0;
+            while (i >= 0)
+            {
+                if (sentence[i] != ' ')
+                {
+                    length++;
+                }
+                else if (length > 0 && sentence[i] == ' ')
+                {
+                    break;
+                }
+                i--;
+            }
+            return length;
+        }
+
     }
 }

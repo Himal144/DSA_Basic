@@ -179,7 +179,7 @@ namespace DSA_Basics.LeetCode
             return low;
         }
 
-        //Function used to find the length of the last word consisting non space(Need to push).
+        //Function used to find the length of the last word consisting non space.
 
         public int LengthOfLastWord(string sentence)
         {
@@ -200,5 +200,25 @@ namespace DSA_Basics.LeetCode
             return length;
         }
 
+        //Function used to sum the current element present in the array and add one to it and represent it back to array.
+
+        public int[] AddOne(int[] nums)
+        {
+
+           int length = nums.Length;
+
+            for(int i = length-1; i >= 0; i--)
+            {
+                if (nums[i] < 9)
+                {
+                    nums[i]++;
+                    return nums;
+                }
+                nums[i] = 0;
+            }
+            int[] result = new int[length+1];
+            result[0] = 1;
+            return result;
+        }
     }
 }

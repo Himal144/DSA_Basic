@@ -220,5 +220,44 @@ namespace DSA_Basics.LeetCode
             result[0] = 1;
             return result;
         }
+
+
+        //Function for adding binary two numbers given in string
+
+
+        public string AddBinary(string num1, string num2)
+        {
+            int length1 = num1.Length - 1;
+            int length2 = num2.Length - 1;
+
+            List<int> result = new List<int>();
+
+            int currentCarry = 0;
+
+            while (length1 >= 0 || length2 >= 0 || currentCarry > 0)
+            {
+                int i = length1 >= 0 ? num1[length1] - '0' : 0;
+                int j = length2 >= 0 ? num2[length2] - '0' : 0;
+                int sum = i + j + currentCarry;
+
+                result.Add(sum % 2);
+                currentCarry = sum / 2;
+                length1--;
+                length2--;
+            }
+
+            char[] output = new char[result.Count];
+            int index = 0;
+
+            for (int i = result.Count - 1; i >= 0; i--)
+            {
+                output[index] = (char)(result[i] + '0');
+                index++;
+            }
+            return new string(output);
+
+        }
+
+       
     }
 }

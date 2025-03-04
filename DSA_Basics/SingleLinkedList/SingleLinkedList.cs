@@ -110,7 +110,7 @@ namespace DSA_Basics.SingleLinkedList
         
         }
 
-
+        //Leetcode easy
         public Node? MergeTwoSortedLinkedList(Node list1,Node list2)
         {
             if (list1 == null) return null;
@@ -134,6 +134,26 @@ namespace DSA_Basics.SingleLinkedList
             }
             current.link = (list1 != null) ? list1 : list2;
             return dummyNode.link;
+        }
+
+        public Node? RemoveDuplicateNode(Node head)
+        {
+            if (head == null) return null;
+
+            Node current = head;
+
+            while (current != null && current.link != null)
+            {
+                if (current.info == current.link.info)
+                {
+                    current.link = current.link.link; // Skip duplicate
+                }
+                else
+                {
+                    current = current.link; // Move forward
+                }
+            }
+            return head;
         }
     }
 }

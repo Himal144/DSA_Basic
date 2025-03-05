@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Xml.Linq;
 
 namespace DSA_Basics.LeetCode
 {
@@ -275,9 +279,43 @@ namespace DSA_Basics.LeetCode
             return second;
         }
 
-        
+        //Function used to calculate the square root without using the builtin function.
+
+        public int Sqrt(int num)
+        {
+            if (num == 0 || num == 1)
+            {
+                return num;
+            }
+
+            int left = 1, right = num, ans = 0;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2; // Avoids potential overflow in (left + right) / 2
+                long square = (long)mid * mid; // Prevent integer overflow
+
+                if (square == num)
+                {
+                    return mid;
+                }
+                else if (square < num)
+                {
+                    left = mid + 1;
+                    ans = mid; // Store the last valid value
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+
+            return ans;
+        }
 
 
+
+      
 
     }
 }

@@ -349,8 +349,35 @@ namespace DSA_Basics.LeetCode
             return num1;
         }
 
-        
+        //Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+      
+        public int[] SortedSquares(int[] nums)
+        {
+            int left = 0;
+            int right = nums.Length - 1;
+            int index = right;
+            int[] result = new int[nums.Length];
+            while (left <= right)
+            {
+                int leftSquare = nums[left] * nums[left];
+                int rightSquare = nums[right] * nums[right];
 
+                if (leftSquare > rightSquare)
+                {
+                    result[index] = leftSquare;
+                    left++;
+                }
+                else
+                {
+                    result[index] = rightSquare;
+                    right--;
+                }
+                index--;
+            }
+            return result;
+        }
+
+      
 
 
     }

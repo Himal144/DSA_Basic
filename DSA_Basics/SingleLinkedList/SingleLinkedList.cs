@@ -155,5 +155,42 @@ namespace DSA_Basics.SingleLinkedList
             }
             return head;
         }
+
+        //Add two linked list node which are represented in reverse order
+        public Node? AddTwoNumberInLinkedList(Node head1, Node head2)
+        {
+            Node? current1 = head1; 
+            Node? current2 = head2;
+            Node? dummyNode = new Node(0);
+            Node current = dummyNode;
+            int carry = 0;
+            while (current1 != null || current2!= null || carry>0)
+            {
+                int num1 = 0;
+                int num2 = 0;
+                int reminder = 0;
+               if(current1 != null)
+                {
+                    num1=current1.info;
+                    current1 = current1.link;
+                }
+                if (current2 != null) { 
+                num2 = current2.info;
+                current2 = current2.link;   
+                }
+                int sum = num1+num2+carry;
+
+                reminder = sum % 10;
+                carry = sum / 10;
+
+                Node? node = new Node(reminder);
+                current.link = node;
+                current = current.link;
+            }
+            return dummyNode.link;
+        }
+
+
+       
     }
 }

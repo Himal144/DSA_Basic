@@ -190,7 +190,23 @@ namespace DSA_Basics.SingleLinkedList
             return dummyNode.link;
         }
 
+        public bool CycleExist(Node head) 
+        {
+            Node slowPtr = head, fastPtr = head;
 
-       
+            while (fastPtr != null && fastPtr.link != null) // FIXED CONDITION
+            {
+                slowPtr = slowPtr.link;
+                fastPtr = fastPtr.link.link;
+
+                if (slowPtr == fastPtr) // Cycle detected
+                    return true;
+            }
+
+            return false; // No cycle
+        }
+
+
+
     }
 }

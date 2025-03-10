@@ -377,6 +377,17 @@ namespace DSA_Basics.LeetCode
             return result;
         }
 
+        //Function for finding the single number from array.
+        public int SingleNumber(int[] nums)
+        {
+            int result = 0;
+            foreach (int num in nums)
+            {
+                result ^= num; // XOR operation
+            }
+            return result;
+        }
+
       
 
 

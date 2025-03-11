@@ -388,6 +388,45 @@ namespace DSA_Basics.LeetCode
             return result;
         }
 
+        //Function for finding max profit price of stock is given in array.
+
+        public int MaxProfitR(int[] nums) //Runtime effecient
+        {
+            int profit = 0;
+            int prevLowest = nums[0];
+            foreach (int num in nums)
+            {
+                int currentProfit = num - prevLowest;
+                if ((num - prevLowest) > profit)
+                {
+                    profit = currentProfit;
+                }
+                if (prevLowest > num)
+                {
+                    prevLowest = num;
+                }
+            }
+            return profit;
+
+        }
+        public int MaxProfitM(int[] prices) //Memory effecient(Need to push)
+        {
+            if (prices == null || prices.Length < 2) return 0;
+
+            int profit = 0, minPrice = prices[0];
+
+            for (int i = 1; i < prices.Length; i++)
+            {
+                // Update the maximum profit if selling today gives a better profit
+                profit = Math.Max(profit, prices[i] - minPrice);
+
+                // Update the minimum price found so far
+                minPrice = Math.Min(minPrice, prices[i]);
+            }
+
+            return profit;
+        }
+
       
 
 
